@@ -118,7 +118,6 @@ export function ChallengesProvider({
       }}
     >
       {children}
-
       { isLevelUpModalOpen && <LevelUpModal />}
     </ChallengesContext.Provider>
   );

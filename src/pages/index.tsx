@@ -7,6 +7,8 @@ import { ExperienceBar } from "../components/ExperienceBar";
 import { Profile } from '../components/Profile';
 import { ChallengeBox } from '../components/ChallengeBox';
 
+import { Login } from '../components/Login';
+
 import styles from '../styles/pages/Home.module.css';
 import { CountdownProvider } from '../contexts/CountdownContext';
 import { ChallengesProvider } from '../contexts/ChallengesContext';
@@ -17,36 +19,47 @@ interface HomeProps {
   challengesCompleted: number;
 }
 
+
+const loginAvailable = true;
+
+const challengeProvider = false;
+
 export default function Home(props: HomeProps) {
 
   return (
-    <ChallengesProvider
-      level={props.level}
-      currentExperience={props.currentExperience}
-      challengesCompleted={props.challengesCompleted}
-    >
+    <>
+      { loginAvailable && <Login />}
 
-      <div className={styles.container}>
-        <Head>
-          <title>Início | move.it</title>
-        </Head>
+      {challengeProvider && <ChallengesProvider
+        level={props.level}
+        currentExperience={props.currentExperience}
+        challengesCompleted={props.challengesCompleted}
+      >
 
-        <ExperienceBar />
+        <div className={styles.container}>
+          <Head>
+            <title>Início | move.it</title>
+          </Head>
 
-        <CountdownProvider>
-          <section>
-            <div>
-              <Profile />
-              <CompletedChallenges />
-              <Countdown />
-            </div>
-            <div>
-              <ChallengeBox />
-            </div>
-          </section>
-        </CountdownProvider>
-      </div>
-    </ChallengesProvider>
+          <ExperienceBar />
+
+          <CountdownProvider>
+            <section>
+              <div>
+                <Profile />
+                <CompletedChallenges />
+                <Countdown />
+              </div>
+              <div>
+                <ChallengeBox />
+              </div>
+            </section>
+          </CountdownProvider>
+        </div>
+
+      </ChallengesProvider>
+      }
+    </>
   )
 }
 

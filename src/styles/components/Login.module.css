@@ -1,0 +1,93 @@
+.loginContainer {
+    background-color: var(--blue);
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.loginContainer > img {
+    width: 90vw;
+    height: 90vh;
+    position: relative;
+    left: -70px;
+}
+
+.loginContainer > div {
+  width: 70%;
+}
+
+.loginForm {
+  margin-top: 150px;
+}
+
+.loginForm > img {
+    width: 250px;
+    height: auto;
+    margin-bottom: 50px;
+}
+.loginForm h1 {
+    color: var(--white);
+}
+
+.loginForm > div.github {
+  display: flex;
+  margin: 2rem 0;
+}
+
+.loginForm > div.github img {
+  margin-right: 15px;
+}
+
+.loginForm > div.github p {
+  width: 230px;
+  color: var(--text-highlight);
+}
+
+.loginForm form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.loginForm label {
+  background-image: linear-gradient(90deg, var(--blue-dark) 30% , var(--blue)); 
+  border-radius: 5px 0 0 5px;
+  height: 5rem;
+  display: flex;
+}
+
+.loginForm input {
+  background-color: transparent;
+  border: none;
+  color: var(--white);
+  padding-left: 30px;
+}
+
+.loginForm input::placeholder {
+  color: var(--text-highlight)
+
+}
+
+.loginForm button {
+
+  border-radius: 0 5px 5px 0;
+  border: none;
+  width: 75px;
+
+  background-color: var(--blue-dark);
+  transition: background 0.2s;
+
+}
+
+.loginForm button:hover {
+  background-color: var(--green);
+
+}
+
+.loginForm button img{
+  width: 24px;
+  height: 24px;
+}
+
