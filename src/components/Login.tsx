@@ -1,10 +1,40 @@
-import styles from '../styles/components/Login.module.css'
+import { useContext, useState } from 'react';
+import { UserContext } from '../contexts/UserContext';
+import styles from '../styles/components/Login.module.css';
+
+
+interface UserData {
+  avatar_url: string;
+  name: string;
+  html_url: string;
+}
 
 export function Login() {
+
+  const { openLoginModal } = useContext(UserContext);
+
+  const [userData, setUserData] = useState<UserData>(null);
+  const [inputName, setInputName] = useState('');
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    await fetch(`https://api.github.com/users/${inputName}`)
+      .then(response => response.json()
+        .then(responseJson =>
+          setUserData(responseJson)
+        ));
+
+    openLoginModal()
+
+    console.log('subimitado');
+    console.log(userData);
+  }
 
   return (
 
     <main className={styles.loginContainer}>
+
       <img src="/icons/simbolo.svg" alt="Move It Símbolo" />
 
       <div className={styles.loginForm}>
@@ -12,12 +42,14 @@ export function Login() {
         <h1>Bem-vindo</h1>
         <div className={styles.github}>
           <img src="/icons/github.svg" alt="GitHub" />
-          <p>Faça login com seu Github para começar</p>
+          <p>Use seu perfil do Github para começar</p>
         </div>
         <form>
           <label htmlFor="name">
-            <input id="name" placeholder="Digite seu nome" />
-            <button type="submit">
+            <input id="name" placeholder="Digite seu nome"
+              onChange={event => (setInputName(event.target.value))}
+            />
+            <button type="submit" onClick={handleSubmit}>
               <img src="/icons/arrow-right.svg" />
             </button>
           </label>

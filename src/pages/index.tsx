@@ -9,9 +9,12 @@ import { ChallengeBox } from '../components/ChallengeBox';
 
 import { Login } from '../components/Login';
 
+import { UserProvider } from '../contexts/UserContext';
+
 import styles from '../styles/pages/Home.module.css';
 import { CountdownProvider } from '../contexts/CountdownContext';
 import { ChallengesProvider } from '../contexts/ChallengesContext';
+
 
 interface HomeProps {
   level: number;
@@ -27,7 +30,7 @@ const challengeProvider = false;
 export default function Home(props: HomeProps) {
 
   return (
-    <>
+    <UserProvider>
       { loginAvailable && <Login />}
 
       {challengeProvider && <ChallengesProvider
@@ -59,7 +62,7 @@ export default function Home(props: HomeProps) {
 
       </ChallengesProvider>
       }
-    </>
+    </ UserProvider>
   )
 }
 
