@@ -11,21 +11,23 @@ interface UserData {
 
 export function Login() {
 
-  const { openLoginModal } = useContext(UserContext);
+  const { openLoginModal, handleInputValue, profileName } = useContext(UserContext);
 
   const [userData, setUserData] = useState<UserData>(null);
-  const [inputName, setInputName] = useState('');
 
   async function handleSubmit(event) {
     event.preventDefault();
 
-    await fetch(`https://api.github.com/users/${inputName}`)
-      .then(response => response.json()
-        .then(responseJson =>
-          setUserData(responseJson)
-        ));
+    // await fetch(`https://api.github.com/users/${profileName}`)
+    //   .then(response => response.json()
+    //     .then(responseJson =>
+    //       setUserData(responseJson)
+    //     ));
 
-    openLoginModal()
+    if (profileName) {
+      openLoginModal()
+
+    }
 
     console.log('subimitado');
     console.log(userData);
@@ -38,22 +40,22 @@ export function Login() {
       <img src="/icons/simbolo.svg" alt="Move It Símbolo" />
 
       <div className={styles.loginForm}>
-        <img src="/icons/logo.svg" alt="Move It Logo" />
+        <img src="/icons/logo-full.svg" alt="Move It Logo" />
         <h1>Bem-vindo</h1>
-        <div className={styles.github}>
-          <img src="/icons/github.svg" alt="GitHub" />
-          <p>Use seu perfil do Github para começar</p>
-        </div>
         <form>
           <label htmlFor="name">
             <input id="name" placeholder="Digite seu nome"
-              onChange={event => (setInputName(event.target.value))}
+              onChange={event => (handleInputValue(event.target.value))}
             />
             <button type="submit" onClick={handleSubmit}>
               <img src="/icons/arrow-right.svg" />
             </button>
           </label>
         </form>
+        <button className={styles.github}>
+          <img src="/icons/github.svg" alt="GitHub" />
+          <p>Use seu perfil do Github para começar</p>
+        </button>
       </div>
     </main>
   );

@@ -9,11 +9,12 @@ import { ChallengeBox } from '../components/ChallengeBox';
 
 import { Login } from '../components/Login';
 
-import { UserProvider } from '../contexts/UserContext';
+import { UserProvider, UserContext } from '../contexts/UserContext';
 
 import styles from '../styles/pages/Home.module.css';
 import { CountdownProvider } from '../contexts/CountdownContext';
 import { ChallengesProvider } from '../contexts/ChallengesContext';
+import { useContext } from 'react';
 
 
 interface HomeProps {
@@ -22,45 +23,47 @@ interface HomeProps {
   challengesCompleted: number;
 }
 
-
-const loginAvailable = true;
-
-const challengeProvider = false;
-
 export default function Home(props: HomeProps) {
+  let { profile } = useContext(UserContext);
+
+  profile = false;
 
   return (
     <UserProvider>
-      { loginAvailable && <Login />}
+      { profile ?
 
-      {challengeProvider && <ChallengesProvider
-        level={props.level}
-        currentExperience={props.currentExperience}
-        challengesCompleted={props.challengesCompleted}
-      >
+        <ChallengesProvider
+          level={props.level}
+          currentExperience={props.currentExperience}
+          challengesCompleted={props.challengesCompleted}
+        >
 
-        <div className={styles.container}>
-          <Head>
-            <title>Início | move.it</title>
-          </Head>
+          <div className={styles.container}>
+            <Head>
+              <title>Início | move.it</title>
+            </Head>
 
-          <ExperienceBar />
+            <ExperienceBar />
 
-          <CountdownProvider>
-            <section>
-              <div>
-                <Profile />
-                <CompletedChallenges />
-                <Countdown />
-              </div>
-              <div>
-                <ChallengeBox />
-              </div>
-            </section>
-          </CountdownProvider>
-        </div>
+            <CountdownProvider>
+              <section>
+                <div>
+                  <Profile />
+                  <CompletedChallenges />
+                  <Countdown />
+                </div>
+                <div>
+                  <ChallengeBox />
+                </div>
+              </section>
+            </CountdownProvider>
+          </div>
 
-      </ChallengesProvider>
+        </ChallengesProvider>
+
+        :
+
+        <Login />
       }
     </ UserProvider>
   )

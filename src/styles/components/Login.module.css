@@ -29,20 +29,28 @@
 }
 .loginForm h1 {
     color: var(--white);
+    margin-bottom: 5rem;
 }
 
-.loginForm > div.github {
+button.github {
   display: flex;
+  align-items: center;
   margin: 2rem 0;
+  background-color: transparent;
+  border: none;
+  transition: filter 0.2s;
 }
 
-.loginForm > div.github img {
+button.github img {
   margin-right: 15px;
 }
 
-.loginForm > div.github p {
-  width: 230px;
+button.github p {
   color: var(--text-highlight);
+}
+
+button.github:hover {
+  filter: brightness(2)
 }
 
 .loginForm form {
@@ -66,11 +74,10 @@
 }
 
 .loginForm input::placeholder {
-  color: var(--text-highlight)
-
+  color: var(--text-highlight);
 }
 
-.loginForm button {
+.loginForm label button {
 
   border-radius: 0 5px 5px 0;
   border: none;
@@ -81,12 +88,12 @@
 
 }
 
-.loginForm button:hover {
+.loginForm label button:hover {
   background-color: var(--green);
 
 }
 
-.loginForm button img{
+.loginForm label button img{
   width: 24px;
   height: 24px;
 }
