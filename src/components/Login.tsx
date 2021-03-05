@@ -11,26 +11,23 @@ interface UserData {
 
 export function Login() {
 
-  const { openLoginModal, handleInputValue, profileName } = useContext(UserContext);
+  const { openLoginModal, handleInputName, userName } = useContext(UserContext);
 
   const [userData, setUserData] = useState<UserData>(null);
 
   async function handleSubmit(event) {
     event.preventDefault();
 
-    // await fetch(`https://api.github.com/users/${profileName}`)
+    // await fetch(`https://api.github.com/users/${userName}`)
     //   .then(response => response.json()
     //     .then(responseJson =>
     //       setUserData(responseJson)
     //     ));
 
-    if (profileName) {
+    if (userName) {
       openLoginModal()
 
     }
-
-    console.log('subimitado');
-    console.log(userData);
   }
 
   return (
@@ -45,7 +42,7 @@ export function Login() {
         <form>
           <label htmlFor="name">
             <input id="name" placeholder="Digite seu nome"
-              onChange={event => (handleInputValue(event.target.value))}
+              onChange={event => (handleInputName(event.target.value))}
             />
             <button type="submit" onClick={handleSubmit}>
               <img src="/icons/arrow-right.svg" />

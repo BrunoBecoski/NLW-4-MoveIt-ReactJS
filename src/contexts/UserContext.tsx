@@ -1,12 +1,13 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
+
 import { LoginModal } from '../components/LoginModal';
 
 interface UserContextData {
-  profileName: string;
-  profileImage: string;
-  profile: boolean;
-  handleInputValue: (value: string) => void;
-  handleImageProfile: (url: string) => void;
+  userName: string;
+  userAvatar: string;
+  handleInputName: (value: string) => void;
+  handleInputAvatar: (url: string) => void;
   closeLoginModal: () => void;
   openLoginModal: () => void;
   createAccount: () => void;
@@ -14,25 +15,33 @@ interface UserContextData {
 
 interface UserProviderProps {
   children: ReactNode;
+  name: string;
+  avatar: string;
 }
 
 export const UserContext = createContext({} as UserContextData);
 
 export function UserProvider({
   children,
+  name,
+  avatar,
 }: UserProviderProps) {
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [profileName, setprofileName] = useState('');
-  const [profileImage, setProfileImage] = useState('/icons/logo.svg');
-  const [profile, setProfile] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [userAvatar, setUserAvatar] = useState('/icons/logo.svg');
 
-  function handleInputValue(value: string) {
-    setprofileName(value);
+  useEffect(() => {
+    setUserName(name);
+    setUserAvatar(avatar);
+  }, [])
+
+  function handleInputName(value: string) {
+    setUserName(value);
   }
 
-  function handleImageProfile(url: string) {
-    setProfileImage(url);
+  function handleInputAvatar(url: string) {
+    setUserAvatar(url);
   }
 
   function openLoginModal() {
@@ -44,20 +53,22 @@ export function UserProvider({
   }
 
   function createAccount() {
-    setProfile(false);
+
+    console.log('create account')
+    Cookies.set('userName', userName);
+    Cookies.set('userAvatar', userAvatar);
   }
 
   return (
     <UserContext.Provider
       value={{
-        profile,
-        profileName,
-        profileImage,
-        handleInputValue,
-        handleImageProfile,
+        userName,
+        userAvatar,
+        createAccount,
         openLoginModal,
         closeLoginModal,
-        createAccount,
+        handleInputName,
+        handleInputAvatar,
       }}
     >
       {children}

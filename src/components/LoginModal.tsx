@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { useContext } from 'react';
 
 import { UserContext } from '../contexts/UserContext';
@@ -5,12 +6,14 @@ import styles from '../styles/components/LoginModal.module.css';
 
 export function LoginModal() {
   const {
-    closeLoginModal,
-    profileName,
-    profileImage,
-    handleImageProfile,
+    userName,
+    userAvatar,
     createAccount,
+    closeLoginModal,
+    handleInputAvatar,
   } = useContext(UserContext);
+
+  const router = useRouter();
 
   return (
     <div className={styles.overlay}>
@@ -22,8 +25,8 @@ export function LoginModal() {
 
         <main className={styles.main}>
           <h1>Sua imagem de perfil</h1>
-          <img src={profileImage} alt="Imagem de perfil" />
-          <strong>{profileName}</strong>
+          <img src={userAvatar} alt="Imagem de perfil" />
+          <strong>{userName}</strong>
 
           <form>
             <label>
@@ -33,7 +36,7 @@ export function LoginModal() {
                 name=""
                 id=""
                 placeholder="URL da image"
-                onChange={event => (handleImageProfile(event.target.value))} />
+                onChange={event => (handleInputAvatar(event.target.value))} />
             </label>
           </form>
         </main>
@@ -42,7 +45,7 @@ export function LoginModal() {
           <button className={styles.buttonNo} onClick={closeLoginModal}>
             Retornar
             </button>
-          <button className={styles.buttonYes} onClick={createAccount}>
+          <button className={styles.buttonYes} onClick={() => router.push('/dashboard')}>
             Criar conta
             </button>
         </footer>
