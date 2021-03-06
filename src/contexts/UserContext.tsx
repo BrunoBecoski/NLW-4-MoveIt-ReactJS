@@ -2,6 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
 import { LoginModal } from '../components/LoginModal';
+import { useRouter } from 'next/router';
 
 interface UserContextData {
   userName: string;
@@ -31,6 +32,8 @@ export function UserProvider({
   const [userName, setUserName] = useState('');
   const [userAvatar, setUserAvatar] = useState('/icons/logo.svg');
 
+  const router = useRouter()
+
   useEffect(() => {
     setUserName(name);
     setUserAvatar(avatar);
@@ -53,10 +56,13 @@ export function UserProvider({
   }
 
   function createAccount() {
-
-    console.log('create account')
     Cookies.set('userName', userName);
     Cookies.set('userAvatar', userAvatar);
+    if (userAvatar === undefined) {
+      Cookies.set('userAvatar', '/icons/logo.svg');
+    }
+
+    router.push('/dashboard');
   }
 
   return (

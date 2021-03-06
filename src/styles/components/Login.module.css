@@ -1,17 +1,18 @@
 .loginContainer {
-    background-color: var(--blue);
-    width: 100vw;
-    height: 100vh;
+  background-color: var(--blue);
+  width: 100vw;
+  height: 100vh;
 
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .loginContainer > img {
-    width: 90vw;
-    height: 90vh;
-    position: relative;
-    left: -70px;
+  width: 90vw;
+  height: 90vh;
+
+  position: relative;
+  left: -70px;
 }
 
 .loginContainer > div {
@@ -19,25 +20,37 @@
 }
 
 .loginForm {
-  margin-top: 150px;
+  margin-top: 7rem;
 }
 
 .loginForm > img {
-    width: 250px;
-    height: auto;
-    margin-bottom: 50px;
+  width: 300px;
+  height: auto;
+
+  margin-bottom: 5rem;
 }
 .loginForm h1 {
-    color: var(--white);
-    margin-bottom: 5rem;
+  margin-bottom: 3rem;
+  
+  font-size: 2rem;
+  color: var(--white);
+}
+
+.loginForm p {
+  margin-bottom: 1rem;
+
+  font-size: 1rem;
+  color: var(--white);
 }
 
 button.github {
   display: flex;
   align-items: center;
-  margin: 2rem 0;
-  background-color: transparent;
+
   border: none;
+  margin: 2rem 0;
+
+  background-color: transparent;
   transition: filter 0.2s;
 }
 
@@ -60,17 +73,19 @@ button.github:hover {
 }
 
 .loginForm label {
-  background-image: linear-gradient(90deg, var(--blue-dark) 30% , var(--blue)); 
-  border-radius: 5px 0 0 5px;
-  height: 5rem;
+  height: 4rem;
   display: flex;
+
+  border-radius: 5px 0 0 5px;
+  background-image: linear-gradient(90deg, var(--blue-dark) 30% , var(--blue)); 
 }
 
 .loginForm input {
-  background-color: transparent;
-  border: none;
-  color: var(--white);
   padding-left: 30px;
+  border: none;
+  
+  background-color: transparent;
+  color: var(--white);
 }
 
 .loginForm input::placeholder {
@@ -78,23 +93,19 @@ button.github:hover {
 }
 
 .loginForm label button {
-
   border-radius: 0 5px 5px 0;
   border: none;
   width: 75px;
 
   background-color: var(--blue-dark);
   transition: background 0.2s;
-
 }
 
 .loginForm label button:hover {
   background-color: var(--green);
-
 }
 
 .loginForm label button img{
   width: 24px;
   height: 24px;
 }
-

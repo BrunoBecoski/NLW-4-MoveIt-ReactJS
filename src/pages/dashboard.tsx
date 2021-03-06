@@ -11,8 +11,11 @@ import styles from '../styles/pages/Home.module.css';
 import { CountdownProvider } from '../contexts/CountdownContext';
 import { ChallengesProvider } from '../contexts/ChallengesContext';
 import { UserProvider } from '../contexts/UserContext';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 interface DashboardProps {
+  hasUser: boolean;
   userName: string;
   userAvatar: string;
   level: number;
@@ -22,6 +25,15 @@ interface DashboardProps {
 
 
 export default function Dashboard(props: DashboardProps) {
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (props.hasUser === true) {
+      router.push('/');
+    }
+  }, [props])
+
 
   return (
     <UserProvider
@@ -61,21 +73,23 @@ export default function Dashboard(props: DashboardProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const {
-    userName,
-    userAvatar,
-    level,
-    currentExperience,
-    challengesCompleted
-  } = ctx.req.cookies;
+  const cookies = ctx.req.cookies;
 
-  return {
-    props: {
-      userName,
-      userAvatar,
-      level: Number(level),
-      currentExperience: Number(currentExperience),
-      challengesCompleted: Number(challengesCompleted),
+  if (!cookies.userName) {
+    return {
+      props: {
+        hasUser: true,
+      }
+    }
+  } else {
+    return {
+      props: {
+        userName: cookies.userName,
+        userAvatar: cookies.userAvatar,
+        level: Number(cookies.level),
+        currentExperience: Number(cookies.currentExperience),
+        challengesCompleted: Number(cookies.challengesCompleted),
+      }
     }
   }
 }

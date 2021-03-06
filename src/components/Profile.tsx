@@ -8,8 +8,6 @@ export function Profile() {
   const { level } = useContext(ChallengesContext);
   const { userName, userAvatar } = useContext(UserContext);
 
-  // console.log(userName);
-
   return (
     <div className={styles.profileContainer}>
       <img src={userAvatar} alt={userName} />

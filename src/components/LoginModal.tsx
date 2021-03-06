@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { useContext } from 'react';
 
 import { UserContext } from '../contexts/UserContext';
@@ -13,8 +12,6 @@ export function LoginModal() {
     handleInputAvatar,
   } = useContext(UserContext);
 
-  const router = useRouter();
-
   return (
     <div className={styles.overlay}>
       <div className={styles.container}>
@@ -25,19 +22,14 @@ export function LoginModal() {
 
         <main className={styles.main}>
           <h1>Sua imagem de perfil</h1>
-          <img src={userAvatar} alt="Imagem de perfil" />
+          <img src={userAvatar || '/icons/logo.svg'} alt="Imagem de perfil" />
           <strong>{userName}</strong>
 
           <form>
-            <label>
-              Url da sua imagem de perfil
-              <input
-                type="url"
-                name=""
-                id=""
-                placeholder="URL da image"
-                onChange={event => (handleInputAvatar(event.target.value))} />
-            </label>
+            <input
+              type="url"
+              placeholder="URL da image"
+              onChange={event => (handleInputAvatar(event.target.value))} />
           </form>
         </main>
 
@@ -45,7 +37,7 @@ export function LoginModal() {
           <button className={styles.buttonNo} onClick={closeLoginModal}>
             Retornar
             </button>
-          <button className={styles.buttonYes} onClick={() => router.push('/dashboard')}>
+          <button className={styles.buttonYes} onClick={createAccount}>
             Criar conta
             </button>
         </footer>

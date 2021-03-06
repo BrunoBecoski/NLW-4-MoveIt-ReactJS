@@ -6,40 +6,38 @@ import { Login } from '../components/Login';
 import { UserProvider } from '../contexts/UserContext';
 
 interface HomeProps {
-  userName: string | null;
+  hasUser: boolean;
 }
 
 export default function Home(props: HomeProps) {
   const router = useRouter();
 
   useEffect(() => {
-    if (!props.userName === null) {
+    if (props.hasUser === true) {
       router.push('/dashboard');
     }
-  }, [props]);
+  }, [props])
 
   return (
     <UserProvider>
       <Login />
     </UserProvider>
   )
-
-
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const cookies = ctx.req.cookies;
+  const cookies = await ctx.req.cookies;
 
   if (cookies.userName) {
     return {
       props: {
-        userName: cookies.userName,
+        hasUser: true,
       }
     }
   } else {
     return {
       props: {
-        userName: null,
+        hasUser: false,
       }
     }
   }
