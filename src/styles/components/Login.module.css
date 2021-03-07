@@ -1,111 +1,116 @@
-.loginContainer {
-  background-color: var(--blue);
+/* = = CONTAINER = = = */
+
+.container {
+  display: flex;
   width: 100vw;
   height: 100vh;
-
-  display: flex;
-  flex-direction: row;
+  
+  border: 1px solid magenta;
+  background-color: var(--blue);
 }
 
-.loginContainer > img {
-  width: 90vw;
+.container > img {
   height: 90vh;
 
-  position: relative;
-  left: -70px;
+  border: 1px solid blue;
 }
 
-.loginContainer > div {
-  width: 70%;
+/* = = MAIN = = */
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 45vw;
+  padding: 10rem;
+  margin: 0 auto;
+
+  border: 1px solid black;
 }
 
-.loginForm {
-  margin-top: 7rem;
+.main > img {
+  width: 30vw;
+  margin-bottom: 8rem;
 }
 
-.loginForm > img {
-  width: 300px;
-  height: auto;
-
-  margin-bottom: 5rem;
-}
-.loginForm h1 {
-  margin-bottom: 3rem;
-  
-  font-size: 2rem;
+.main h1 {
+  font-size: 3rem;
   color: var(--white);
+  margin-bottom: 2rem;
 }
 
-.loginForm p {
+.main p {
+  font-size: 1.5rem;
+  color: var(--white);
   margin-bottom: 1rem;
-
-  font-size: 1rem;
-  color: var(--white);
 }
 
-button.github {
-  display: flex;
-  align-items: center;
+/* = = FORM = = */
 
-  border: none;
-  margin: 2rem 0;
-
-  background-color: transparent;
-  transition: filter 0.2s;
-}
-
-button.github img {
-  margin-right: 15px;
-}
-
-button.github p {
-  color: var(--text-highlight);
-}
-
-button.github:hover {
-  filter: brightness(2)
-}
-
-.loginForm form {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.loginForm label {
+.form {
+  border: 1px solid red;
   height: 4rem;
-  display: flex;
+  
+  margin-bottom: 2rem;
+}
+
+.form label {
+
+  height: 4rem;
 
   border-radius: 5px 0 0 5px;
-  background-image: linear-gradient(90deg, var(--blue-dark) 30% , var(--blue)); 
+  background-image: linear-gradient(90deg, var(--blue-dark), var(--blue));
+
 }
 
-.loginForm input {
-  padding-left: 30px;
+.form input,
+.form button {
   border: none;
-  
   background-color: transparent;
-  color: var(--white);
 }
 
-.loginForm input::placeholder {
-  color: var(--text-highlight);
-}
-
-.loginForm label button {
+.form button {
   border-radius: 0 5px 5px 0;
-  border: none;
   width: 75px;
 
   background-color: var(--blue-dark);
-  transition: background 0.2s;
 }
 
-.loginForm label button:hover {
+.form button:hover {
   background-color: var(--green);
 }
 
-.loginForm label button img{
-  width: 24px;
-  height: 24px;
+
+/* = = GITHUB = = */
+
+.github {
+  display: flex;
+  align-items: center;
+
+  background: transparent;
+
+  border: none;
+  
+  height: 5rem;
+
+  
 }
+
+.github img {
+  background-position: center;
+  margin-right: 15px;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.github p {
+  color: var(--text-highlight);
+  font-size: 1.5rem;
+  margin-top: 15px;
+}
+
+.github:hover {
+  filter: brightness(2);
+}
+
+
