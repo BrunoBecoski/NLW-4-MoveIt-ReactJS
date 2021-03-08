@@ -5,41 +5,41 @@
   width: 100vw;
   height: 100vh;
   
-  border: 1px solid magenta;
   background-color: var(--blue);
 }
 
 .container > img {
-  height: 90vh;
-
-  border: 1px solid blue;
+  width: 50vw;
 }
 
 /* = = MAIN = = */
 
 .main {
+
+  width: 50vw;
+
+
   display: flex;
   flex-direction: column;
-  flex: 1;
-  max-width: 45vw;
-  padding: 10rem;
-  margin: 0 auto;
 
-  border: 1px solid black;
+
+  flex: 1;
+  padding-left: 5rem;
+  margin: auto;
 }
 
 .main > img {
-  width: 30vw;
-  margin-bottom: 8rem;
+  width: 25vw;
+  margin-bottom: 5rem;
 }
 
-.main h1 {
+.main > h1 {
   font-size: 3rem;
   color: var(--white);
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
-.main p {
+.main > p {
   font-size: 1.5rem;
   color: var(--white);
   margin-bottom: 1rem;
@@ -47,20 +47,27 @@
 
 /* = = FORM = = */
 
-.form {
-  border: 1px solid red;
-  height: 4rem;
-  
+.form {  
   margin-bottom: 2rem;
 }
 
 .form label {
 
-  height: 4rem;
+  display: flex;
+
+  height: 5rem;
+
+  max-width: 20vw;
 
   border-radius: 5px 0 0 5px;
   background-image: linear-gradient(90deg, var(--blue-dark), var(--blue));
 
+}
+
+.form input {  
+  width: calc(100% - 5rem);
+  margin-left: 2rem;
+  color: var(--white);
 }
 
 .form input,
@@ -69,9 +76,13 @@
   background-color: transparent;
 }
 
+.form input::placeholder {
+  color: var(--text-highlight);
+}
+
 .form button {
   border-radius: 0 5px 5px 0;
-  width: 75px;
+  width: 5rem;
 
   background-color: var(--blue-dark);
 }
@@ -86,27 +97,30 @@
 .github {
   display: flex;
   align-items: center;
-
-  background: transparent;
-
-  border: none;
   
-  height: 5rem;
+  width: 24rem;
+  height: 5em;
+  border: none;
 
+  text-align: left;
+  
+  background: transparent;
   
 }
 
 .github img {
-  background-position: center;
+  width: 3rem;
+  height: 3rem;
   margin-right: 15px;
-  height: 2.5rem;
-  width: 2.5rem;
+  
+  background-position: center;
 }
 
 .github p {
-  color: var(--text-highlight);
-  font-size: 1.5rem;
   margin-top: 15px;
+
+  font-size: 1.5rem;
+  color: var(--text-highlight);
 }
 
 .github:hover {
@@ -114,3 +128,115 @@
 }
 
 
+@media (max-width: 1500px) {
+
+  .main > img {
+    width: 20vw;
+    margin-bottom: 3rem;
+  }
+  
+  .main h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .main > p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form {  
+    margin-bottom: 1rem;
+  }
+  
+  .form label {
+    height: 4rem;
+    max-width: 25vw;  
+  }
+  
+  .form input {  
+    margin-left: 1.5rem;
+  }
+  
+  .form input::placeholder {
+    font-size: .9rem;
+  }
+
+  .github {
+    width: 15rem;
+    height: 5em;    
+  }
+  
+  .github img {
+    width: 2.5rem;
+    height: 2.5rem;
+   }
+  
+  .github p {
+    margin-bottom: 15px;
+  
+    font-size: 1rem;
+  }    
+}
+
+@media (max-width: 1000px) {
+
+  .container > img {
+    width: 100%;
+  }
+  
+  .main {
+    position: absolute;
+    width: 50vw;
+    margin: 0 25vw;
+    
+  }
+
+  .main > img {
+    width: 20vw;
+    margin-bottom: 3rem;
+  }
+  
+  .main h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .main > p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form {  
+    margin-bottom: 1rem;
+  }
+  
+  .form label {
+    height: 4rem;
+    max-width: 25vw;  
+  }
+  
+  .form input {  
+    margin-left: 1.5rem;
+  }
+  
+  .form input::placeholder {
+    font-size: .9rem;
+  }
+
+  .github {
+    width: 15rem;
+    height: 5em;    
+  }
+  
+  .github img {
+    width: 2.5rem;
+    height: 2.5rem;
+   }
+  
+  .github p {
+    margin-bottom: 15px;
+  
+    font-size: 1rem;
+  }    
+}
