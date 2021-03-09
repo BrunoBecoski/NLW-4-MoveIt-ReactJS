@@ -16,45 +16,49 @@ export function Login() {
   return (
     <div className={styles.container}>
 
-      <img src="/icons/simbolo.svg" alt="Move It Símbolo" />
+      <div className={styles.content}>
 
-      <main className={styles.main}>
+        <img src="/icons/simbolo.svg" alt="Move It Símbolo" />
 
-        <img src="/icons/logo-full.svg" alt="Move It Logo" />
+        <main className={styles.main}>
 
-        <h1>Bem-vindo</h1>
+          <img src="/icons/logo-full.svg" alt="Move It Logo" />
 
-        <p>Crie sua conta agora mesmo</p>
+          <h1>Bem-vindo</h1>
 
-        <form className={styles.form}>
+          <p>Crie sua conta agora mesmo</p>
 
-          <label htmlFor="name">
+          <form className={styles.form}>
 
-            <input
-              id="name"
-              placeholder="Digite seu nome"
-              onChange={event => (handleInputName(event.target.value))}
-            />
+            <label htmlFor="name">
 
-            <button type="submit" onClick={handleSubmit}>
+              <input
+                id="name"
+                placeholder="Digite seu nome"
+                onChange={event => (handleInputName(event.target.value))}
+              />
 
-              <img src="/icons/arrow-right.svg" />
+              <button type="submit" onClick={handleSubmit}>
 
-            </button>
+                <img src="/icons/arrow-right.svg" />
 
-          </label>
+              </button>
 
-        </form>
+            </label>
 
-        <button className={styles.github}>
+          </form>
 
-          <img src="/icons/github.svg" alt="GitHub" />
+          <button className={styles.github}>
 
-          <p>Use seu perfil do Github para começar</p>
+            <img src="/icons/github.svg" alt="GitHub" />
 
-        </button>
+            <p>Use seu perfil do Github para começar</p>
 
-      </main>
+          </button>
+
+        </main>
+
+      </div>
 
     </div>
   );
