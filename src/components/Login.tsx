@@ -58,8 +58,8 @@ export function Login() {
 
         </main>
 
-      </div>
+      </div >
 
-    </div>
+    </div >
   );
 }
