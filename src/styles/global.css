@@ -20,18 +20,28 @@
   --blue-twitter: #2aa9e0;
 }
 
-@media(max-width: 1080px) {
+html {
+  font-size: 200%;
+}
+
+@media(max-width: 1920px) {
   html {
-    font-size: 93.75%;
+    font-size: 150%;
   }
 }
 
-@media(max-width: 720px) {
+@media(max-width: 1366px) {
   html {
-    font-size: 87.5%;
+    font-size: 100%;
   }
 }
-  
+
+@media(max-width: 1200px) {
+  html {
+    font-size: 90%;
+  }
+}
+
 body {
   background-color: var(--background);
   color: var(--text);
