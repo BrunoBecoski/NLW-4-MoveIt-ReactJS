@@ -4,13 +4,17 @@ import styles from '../styles/components/Login.module.css';
 
 export function Login() {
 
-  const { openLoginModal, handleInputName, userName } = useContext(UserContext);
+  const { openLoginModal, openLoginGithubModal, handleInputName, userName } = useContext(UserContext);
 
   function handleSubmit(event) {
     event.preventDefault();
     if (userName) {
       openLoginModal()
     }
+  }
+
+  function handleGithub() {
+    openLoginGithubModal()
   }
 
   return (
@@ -48,7 +52,7 @@ export function Login() {
 
           </form>
 
-          <button className={styles.github}>
+          <button className={styles.github} onClick={handleGithub}>
 
             <img src="/icons/github.svg" alt="GitHub" />
 

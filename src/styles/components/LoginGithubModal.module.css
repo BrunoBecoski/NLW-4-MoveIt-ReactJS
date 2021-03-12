@@ -1,0 +1,122 @@
+.overlay {
+    background: rgba(143, 143, 143, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    background: var(--white);
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    position: relative;
+    border-radius: 5px;
+  }
+  
+  .buttonClose {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    background: transparent;
+    border: 0;
+    font-size: 0px;
+  }
+  
+  main.main {
+    padding: 1.5rem 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  
+  main.main h1 {
+    color: var(--blue);
+    font-weight: 600;
+    font-size: 1.25rem;
+    padding: 0 2rem 1.5rem;
+    border-bottom: 1px solid var(--gray-line);
+  }
+  
+  main.main img {
+    margin-top: 1rem;
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+  }
+  
+  main.main strong {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--title);
+    margin: 1rem 0;
+  }
+  
+  main.main form {
+    display: flex;
+    margin: 0 2rem;  
+  }
+  
+  main.main label {
+    text-align: left;
+    color: var(--title);
+  }
+  
+  main.main input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--title);
+  }
+  
+  main.main input::placeholder {
+    font-size: .8rem;
+  
+  }
+  
+  footer.footer button {
+    font-weight: 600;
+    height: 4.5rem;
+    width: 50%;
+    border: none;
+  
+    font-size: 1.2rem;
+    transition: 0.2s;
+    border-top: 1px solid var(--gray-line);
+  }
+  
+  footer.footer .buttonNo {
+    border-bottom-left-radius: 5px;
+    
+    color: var(--red);
+    background-color: var(--red-light);
+  
+    border-top: 1px solid var(--gray-line);
+  }
+  
+  footer.footer .buttonNo:hover {
+    color: var(--white);
+    background-color: var(--red);
+  }
+  
+  .buttonYes {
+    border-bottom-right-radius: 5px;
+  
+    color: var(--green);
+    background-color: var(--green-light);
+  }  
+  
+  footer.footer .buttonYes:hover {
+    color: var(--white);
+    background-color: var(--green);
+  }
+  

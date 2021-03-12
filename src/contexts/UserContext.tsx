@@ -2,6 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
 import { LoginModal } from '../components/LoginModal';
+import { LoginGithubModal } from '../components/LoginGithubModal';
 import { useRouter } from 'next/router';
 
 interface UserContextData {
@@ -11,6 +12,8 @@ interface UserContextData {
   handleInputAvatar: (url: string) => void;
   closeLoginModal: () => void;
   openLoginModal: () => void;
+  closeLoginGithubModal: () => void;
+  openLoginGithubModal: () => void;
   createAccount: () => void;
 }
 
@@ -29,6 +32,7 @@ export function UserProvider({
 }: UserProviderProps) {
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isLoginGithubModalOpen, setIsLoginGithubModalOpen] = useState(false);
   const [userName, setUserName] = useState('');
   const [userAvatar, setUserAvatar] = useState('/icons/logo.svg');
 
@@ -55,6 +59,15 @@ export function UserProvider({
     setIsLoginModalOpen(false);
   }
 
+  function openLoginGithubModal() {
+    setIsLoginGithubModalOpen(true);
+  }
+
+  function closeLoginGithubModal() {
+    setIsLoginGithubModalOpen(false);
+  }
+
+
   function createAccount() {
     Cookies.set('userName', userName);
     Cookies.set('userAvatar', userAvatar);
@@ -73,12 +86,15 @@ export function UserProvider({
         createAccount,
         openLoginModal,
         closeLoginModal,
+        openLoginGithubModal,
+        closeLoginGithubModal,
         handleInputName,
         handleInputAvatar,
       }}
     >
       {children}
       { isLoginModalOpen && <LoginModal />}
+      { isLoginGithubModalOpen && <LoginGithubModal />}
     </UserContext.Provider>
   )
 } 
